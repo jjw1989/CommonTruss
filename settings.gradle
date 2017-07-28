@@ -1,0 +1,4 @@
+include ':app'
+include ':library:common'
+include ':library:network'
+include ':library:googlemap'
