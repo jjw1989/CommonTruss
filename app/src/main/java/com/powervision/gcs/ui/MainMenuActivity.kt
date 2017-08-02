@@ -1,5 +1,6 @@
 package com.powervision.gcs.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.Snackbar
 import android.support.design.widget.NavigationView
@@ -9,6 +10,7 @@ import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import com.alibaba.android.arouter.launcher.ARouter
 import com.powervision.gcs.R
 import kotlinx.android.synthetic.main.gcs_main_menu_layout.*
 import kotlinx.android.synthetic.main.app_bar_main_menu.*
@@ -36,6 +38,9 @@ class MainMenuActivity : AppCompatActivity(), NavigationView.OnNavigationItemSel
         } else {
             Log.i("qwert", "222222222222222222222222")
         }
+        ARouter.getInstance().build("/test/main").navigation()
+//        var intent:Intent= Intent(this,WelcomeActivity::class.java)
+//        startActivity(intent)
     }
 
     override fun onBackPressed() {

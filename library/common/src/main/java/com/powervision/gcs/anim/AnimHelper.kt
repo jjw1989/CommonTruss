@@ -1,12 +1,15 @@
 package com.powervision.gcs.anim
 
 import android.animation.Animator
+import android.animation.Animator.AnimatorListener
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.view.View
 import android.view.ViewGroup
 import android.view.animation.Animation
+import android.view.animation.Animation.AnimationListener
+import android.view.animation.Interpolator
 
 @SuppressLint("StaticFieldLeak")
 /**
@@ -20,7 +23,25 @@ object AnimHelper {
     private var objAnim: ObjectAnimator? = null
 
     var animDuration:Long=600
+    /**
+     * activity从底部进入
+     */
+    fun getSlideFromBottom(context: Activity,isCloseActivity:Boolean,interpolator: Interpolator?){
+        this.mActivity=context
+        anim=BaseAnimView.slideFromBottom(interpolator!!)
+        if (isCloseActivity) {
+            anim!!.setAnimationListener(animListener)
+        }
+        getRootView(mActivity!!).animation= anim
+        getRootView(mActivity!!).startAnimation(anim)
+    }
 
+    /**
+     * View从底部进入
+     */
+    fun getSlideFromBottom(mView:View,interpolator: Interpolator?){
+
+    }
     /**************************************/
     /**
      * 获取根视图
@@ -34,12 +55,12 @@ object AnimHelper {
     /**
      * 补间动画监听
      */
-    class animListener:Animation.AnimationListener{
+   var  animListener: AnimationListener= object :AnimationListener{
         override fun onAnimationRepeat(p0: Animation?) {
         }
 
         override fun onAnimationEnd(p0: Animation?) {
-           mActivity!!.finish()
+            mActivity!!.finish()
         }
 
         override fun onAnimationStart(p0: Animation?) {
@@ -50,9 +71,8 @@ object AnimHelper {
     /**
      * 属性动画监听
      */
-    class animatorListener:Animator.AnimatorListener{
+    var animatorListener: AnimatorListener= object :AnimatorListener{
         override fun onAnimationRepeat(p0: Animator?) {
-
         }
 
         override fun onAnimationEnd(p0: Animator?) {
@@ -63,7 +83,9 @@ object AnimHelper {
         }
 
         override fun onAnimationStart(p0: Animator?) {
+
         }
+
 
     }
 }
