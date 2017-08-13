@@ -4,7 +4,7 @@ import android.app.Application
 import com.alibaba.android.arouter.launcher.ARouter
 
 /**
- * Created by David on 2017/8/2.
+ * Created by Sundy on 2017/8/2.
  */
 class PVApplication: Application() {
 

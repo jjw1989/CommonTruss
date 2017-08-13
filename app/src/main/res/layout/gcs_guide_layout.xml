@@ -5,12 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.powervision.gcs.ui.GuideActivity">
-
-    <CheckBox
-        android:id="@+id/checkBox"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CheckBox"
-        tools:layout_editor_absoluteX="141dp"
-        tools:layout_editor_absoluteY="211dp" />
+    <com.powervision.gcs.view.indicator.BannerView
+        android:id="@+id/bannerView"
+        android:background="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 </android.support.constraint.ConstraintLayout>
