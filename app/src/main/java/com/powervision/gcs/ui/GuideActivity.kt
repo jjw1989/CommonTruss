@@ -75,22 +75,10 @@ class GuideActivity : AppCompatActivity(), ViewControl {
         if (LanguageUtils.getNatLanguage(applicationContext)) {
             Glide.with(applicationContext)
                     .load(img_zh[position])
-
-                    // .placeholder(R.mipmap.pictures_no)
-                    // .error(R.mipmap.pictures_no)
-                    // .crossFade()
-                    // .skipMemoryCache(false)
-                    //  .priority(Priority.HIGH)
                     .into(imageView)
         } else {
             Glide.with(applicationContext)
                     .load(img_en[position])
-
-                    // .placeholder(R.mipmap.pictures_no)
-                    // .error(R.mipmap.pictures_no)
-                    // .crossFade()
-                    // .skipMemoryCache(false)
-                    //  .priority(Priority.HIGH)
                     .into(imageView)
         }
     }
