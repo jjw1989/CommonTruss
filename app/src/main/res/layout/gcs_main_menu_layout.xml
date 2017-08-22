@@ -1,25 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <FrameLayout
+    android:id="@+id/main_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:openDrawer="start">
+    android:layout_above="@+id/navigateTabBar" />
 
-    <include
-        layout="@layout/app_bar_main_menu"
+    <com.powervision.gcs.view.MainNavigateTabBar
+    android:id="@+id/navigateTabBar"
+    android:layout_width="match_parent"
+    android:layout_height="50.0dp"
+    android:layout_alignParentBottom="true"
+    app:containerId="@+id/main_container"
+    app:navigateTabSelectedTextColor="@color/select_text"
+    app:navigateTabTextColor="@color/unselect_text"
+    app:navigateTabTextSize="12sp" />
+
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/navigateTabBar"
+        android:background="@mipmap/comui_bar_top_shadow" />
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/nav_view"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:headerLayout="@layout/nav_header_main_menu"
-        app:menu="@menu/gcs_main_menu_layout_drawer" />
-
-</android.support.v4.widget.DrawerLayout>
+</RelativeLayout>

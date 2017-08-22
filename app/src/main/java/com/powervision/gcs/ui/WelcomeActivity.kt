@@ -16,7 +16,8 @@ class WelcomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.gcs_welcome_layout)
         setScreenArrts()
-        ARouter.getInstance().build("/ui/GuideActivity").navigation()
+       // ARouter.getInstance().build("/ui/GuideActivity").navigation()
+        ARouter.getInstance().build("/test/main").navigation()
     }
 
     /**

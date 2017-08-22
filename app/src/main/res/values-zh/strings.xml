@@ -6,4 +6,10 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
+
+    <!--table-->
+    <string name="tab_fly">飞行</string>
+    <string name="tab_media">相册</string>
+    <string name="tab_service">服务</string>
+    <string name="tab_usercenter">我的</string>
 </resources>
