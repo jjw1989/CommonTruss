@@ -2,6 +2,7 @@ package com.powervision.gcs.ui
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import com.alibaba.android.arouter.launcher.ARouter
 import com.powervision.gcs.R
@@ -18,7 +19,11 @@ class WelcomeActivity : AppCompatActivity() {
         setScreenArrts()
        // ARouter.getInstance().build("/ui/GuideActivity").navigation()
        // ARouter.getInstance().build("/test/main").navigation()
-        ARouter.getInstance().build("/set/plane").navigation()
+        Handler().postDelayed({
+            ARouter.getInstance().build("/set/plane").withTransition(R.anim.push_right_in,R.anim.push_right_out)
+                    .navigation()
+        },3000)
+
     }
 
     /**
