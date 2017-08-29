@@ -10,7 +10,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
         <activity android:name=".ui.WelcomeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,12 +20,15 @@
         <activity
             android:name=".ui.GuideActivity"
             android:screenOrientation="landscape" />
-
         <activity
             android:name=".ui.MainMenuActivity"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.aty.set.AirplaneSettingActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:launchMode="singleTop"
+            android:theme="@style/GcsDialogStyle" />
+        <activity android:name=".ui.aty.fly.FlyControllerManagerActivity"></activity>
     </application>
 
 </manifest>
