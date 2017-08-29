@@ -2,6 +2,7 @@ package com.powervision.gcs.ui.aty.fly
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import com.powervision.gcs.R
 
 /**
@@ -9,7 +10,7 @@ import com.powervision.gcs.R
  * Create by Sundy on 2017/8/29
  */
 class FlyControllerManagerActivity : AppCompatActivity() {
-
+    var view:View?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.pv_fly_controller_manager_layout)
