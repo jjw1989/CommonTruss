@@ -6,16 +6,18 @@
     android:layout_height="match_parent"
     tools:context="com.powervision.gcs.ui.aty.fly.PVFlightControllerActivity">
  <com.powervision.gcs.view.seekbar.CustomSeekBar
+     android:layout_marginTop="60dp"
      android:id="@+id/seekBar"
      android:layout_width="match_parent"
-     android:layout_height="20dp"
-     android:layout_margin="10dp"
+     android:layout_height="wrap_content"
      android:max="100"
      android:paddingLeft="12dp"
      android:paddingRight="12dp"
      android:progress="0"
      android:progressDrawable="@android:color/transparent"
-     android:thumb="@drawable/seek_thumb_normal"
+     android:thumb="@drawable/example_scrubber_control_pressed_holo"
      android:thumbOffset="12dp"
-     />
+     tools:layout_editor_absoluteY="231dp"
+     tools:layout_editor_absoluteX="16dp"
+     tools:ignore="MissingConstraints" />
 </android.support.constraint.ConstraintLayout>

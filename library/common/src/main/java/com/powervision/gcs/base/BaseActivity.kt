@@ -30,7 +30,7 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView {
         super.onCreate(savedInstanceState)
         mActivity = this
         context = applicationContext
-        var bundle:Bundle=intent.extras
+        var bundle:Bundle?=intent.extras
         initData(bundle)
         setBaseView(bindLayout())
         initView(savedInstanceState, rootView)

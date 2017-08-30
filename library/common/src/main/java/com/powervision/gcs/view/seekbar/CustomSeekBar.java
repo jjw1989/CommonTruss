@@ -61,8 +61,8 @@ public class CustomSeekBar extends android.support.v7.widget.AppCompatSeekBar {
 					progressItemRight = progressBarWidth;
 				}
 				Rect progressRect = new Rect();
-				progressRect.set(lastProgressX, thumboffset / 2,
-						progressItemRight, progressBarHeight - thumboffset / 2);
+				progressRect.set(lastProgressX, thumboffset+25 ,
+						progressItemRight, progressBarHeight - thumboffset-25 );
 				canvas.drawRect(progressRect, progressPaint);
 				lastProgressX = progressItemRight;
 			}
