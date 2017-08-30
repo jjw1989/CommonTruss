@@ -30,16 +30,27 @@ abstract class BaseActivity : AppCompatActivity(), IBaseView {
         super.onCreate(savedInstanceState)
         mActivity = this
         context = applicationContext
-        var bundle: Bundle = intent.extras
+        var bundle:Bundle=intent.extras
         initData(bundle)
         setBaseView(bindLayout())
-        initView(savedInstanceState!!, rootView!!)
+        initView(savedInstanceState, rootView)
         doBusiness()
     }
 
     protected fun setBaseView(@LayoutRes layoutId: Int) {
         rootView = LayoutInflater.from(this).inflate(layoutId, null)
         setContentView(rootView)
+    }
+
+    /**
+     * 设置屏幕属性
+     */
+    protected fun setScreenArrts() {
+        window.decorView.systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        window.decorView.setOnSystemUiVisibilityChangeListener {
+            window.decorView.systemUiVisibility = 5895
+            window.decorView.requestFocus()
+        }
     }
 
     /**

@@ -1,5 +1,6 @@
 package com.powervision.gcs.base
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 
@@ -11,7 +12,7 @@ interface IBaseView :View.OnClickListener{
      * 初始化数据
      * @param bundle 传递过来的bundle
      */
-    fun initData(bundle: Bundle)
+    fun initData(bundle: Bundle?)
 
     /**
      * 绑定布局
@@ -21,7 +22,7 @@ interface IBaseView :View.OnClickListener{
     /**
      * 初始化view
      */
-    fun initView(savedInstanceState :Bundle, view:View)
+    fun initView(savedInstanceState :Bundle?, view:View?)
 
     /**
      * 业务操作

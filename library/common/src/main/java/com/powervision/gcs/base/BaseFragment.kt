@@ -81,7 +81,6 @@ abstract class BaseFragment : Fragment(), IBaseView {
      */
     override fun onDestroyView() {
         if (contentView != null) {
-
             (contentView!!.parent as ViewGroup).removeView(contentView)
         }
         super.onDestroyView()

@@ -7,4 +7,9 @@
     <color name="select_text">#26292b</color>
     <color name="unselect_text">#83888f</color>
     <color name="bg">#1f83888f</color>
+
+    <color name="red">#FA5858</color>
+    <color name="green">#74DF00</color>
+    <color name="yellow">#D7DF01</color>
+
 </resources>
