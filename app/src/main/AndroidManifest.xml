@@ -28,7 +28,10 @@
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:launchMode="singleTop"
             android:theme="@style/GcsDialogStyle" />
-        <activity android:name=".ui.aty.fly.FlyControllerManagerActivity"></activity>
+        <activity android:name=".ui.aty.fly.PVFlightControllerActivity"
+            android:configChanges="keyboardHidden|orientation|screenSize"
+            android:screenOrientation="sensorLandscape"
+            />
     </application>
 
 </manifest>
