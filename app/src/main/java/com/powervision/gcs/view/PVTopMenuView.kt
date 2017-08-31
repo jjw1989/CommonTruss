@@ -9,6 +9,7 @@ import android.widget.LinearLayout
  * Created by David on 2017/8/31.
  */
 class PVTopMenuView(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
+
     init {
 
     }
