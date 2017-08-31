@@ -40,10 +40,11 @@ class WelcomeActivity : BaseActivity() {
         setScreenArrts()
         Handler().postDelayed({
             //ARouter.getInstance().build("/set/plane").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
-            ARouter.getInstance()
-                    .build("/aty/fly/flight")
-                    .withTransition(R.anim.push_right_in,R.anim.push_right_out)
-                    .navigation()
+            ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
+//            ARouter.getInstance()
+//                    .build("/aty/fly/flight")
+//                    .withTransition(R.anim.push_right_in,R.anim.push_right_out)
+//                    .navigation()
         },3000)
     }
 

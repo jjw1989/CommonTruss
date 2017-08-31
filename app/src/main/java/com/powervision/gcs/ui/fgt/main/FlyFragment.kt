@@ -2,24 +2,45 @@ package com.powervision.gcs.ui.fgt.main
 
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-
 import com.powervision.gcs.R
-
+import com.powervision.gcs.base.BaseFragment
 
 /**
- * A simple [Fragment] subclass.
+ * 飞机切换主页
+ * Create by Sundy on 2017/8/31
  */
-class FlyFragment : Fragment() {
+class FlyFragment : BaseFragment() {
+    /**
+     * 接收上个界面的数据
+     */
+    override fun initData(bundle: Bundle?) {
 
-
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View? {
-        // Inflate the layout for this fragment
-        return inflater!!.inflate(R.layout.pv_main_fly_layout, container, false)
     }
 
-}// Required empty public constructor
+    /**
+     * 绑定视图
+     */
+    override fun bindLayout(): Int {
+      return R.layout.pv_main_fly_layout
+    }
+
+    /**
+     * 绑定控件
+     */
+    override fun initView(savedInstanceState: Bundle?, view: View?) {
+
+    }
+
+    /**
+     * 处理业务
+     */
+    override fun doBusiness() {
+
+    }
+
+    override fun onWidgetClick(view: View) {
+
+    }
+
+}

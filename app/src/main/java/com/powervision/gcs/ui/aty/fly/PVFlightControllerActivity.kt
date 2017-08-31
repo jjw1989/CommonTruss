@@ -50,5 +50,6 @@ class PVFlightControllerActivity : AppCompatActivity() {
 
         seekBar.initData(progressItemList)
         seekBar.invalidate()
+
     }
 }

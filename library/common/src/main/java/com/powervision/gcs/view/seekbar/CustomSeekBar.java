@@ -8,6 +8,7 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.widget.SeekBar;
 
 public class CustomSeekBar extends android.support.v7.widget.AppCompatSeekBar {
@@ -71,4 +72,8 @@ public class CustomSeekBar extends android.support.v7.widget.AppCompatSeekBar {
 
 	}
 
+	@Override
+	public boolean onTouchEvent(MotionEvent event) {
+		return false;
+	}
 }
