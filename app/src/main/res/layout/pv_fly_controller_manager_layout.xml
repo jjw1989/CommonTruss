@@ -6,22 +6,23 @@
     android:gravity="center"
     android:layout_height="match_parent"
     tools:context="com.powervision.gcs.ui.aty.fly.PVFlightControllerActivity">
- <com.powervision.gcs.view.seekbar.CustomSeekBar
-     android:layout_marginTop="60dp"
-     android:id="@+id/seekBar"
-     android:layout_width="match_parent"
-     android:layout_height="5dp"
-     android:layout_margin="10dp"
-     android:max="100"
-     android:paddingLeft="12dp"
-     android:paddingRight="12dp"
-     android:progress="0"
-     android:progressDrawable="@android:color/transparent"
-     android:thumb="@mipmap/pv_green"
-     android:thumbOffset="0dp"
-     tools:layout_editor_absoluteY="231dp"
-     tools:layout_editor_absoluteX="16dp"
-     tools:ignore="MissingConstraints" />
+
+ <!--<com.powervision.gcs.view.seekbar.CustomSeekBar-->
+     <!--android:layout_marginTop="60dp"-->
+     <!--android:id="@+id/seekBar"-->
+     <!--android:layout_width="match_parent"-->
+     <!--android:layout_height="5dp"-->
+     <!--android:layout_margin="10dp"-->
+     <!--android:max="100"-->
+     <!--android:paddingLeft="12dp"-->
+     <!--android:paddingRight="12dp"-->
+     <!--android:progress="0"-->
+     <!--android:progressDrawable="@android:color/transparent"-->
+     <!--android:thumb="@mipmap/pv_green"-->
+     <!--android:thumbOffset="0dp"-->
+     <!--tools:layout_editor_absoluteY="231dp"-->
+     <!--tools:layout_editor_absoluteX="16dp"-->
+     <!--tools:ignore="MissingConstraints" />-->
 
 
 </RelativeLayout>

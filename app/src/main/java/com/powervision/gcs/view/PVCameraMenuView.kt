@@ -7,11 +7,11 @@ import android.widget.LinearLayout
 import com.powervision.gcs.R
 
 /**
- * 顶部视图
- * Created by David on 2017/8/31.
+ * 相机菜单
+ * Created by Sundy on 2017/8/31.
  */
-class PVTopMenuView(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
+class PVCameraMenuView(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
     init {
-       View.inflate(context, R.layout.pv_topmenu_layout,this)
+        View.inflate(context, R.layout.pv_camera_menu_layout,this)
     }
 }

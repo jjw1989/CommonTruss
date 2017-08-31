@@ -14,7 +14,7 @@ import com.powervision.gcs.view.MainNavigateTabBar
 import kotlinx.android.synthetic.main.gcs_main_menu_layout.*
 
 /**
- * 主控器
+ * 主控制器
  *  Create by Sundy on 2017/8/31
  */
 @Route(path = "/ui/main")
