@@ -1,16 +1,15 @@
-package com.powervision.gcs.ui.fgt.main
-
+package com.powervision.gcs.ui.aty.fly
 
 import android.os.Bundle
 import android.view.View
 import com.powervision.gcs.R
-import com.powervision.gcs.base.BaseFragment
+import com.powervision.gcs.base.BaseActivity
 
 /**
- * 飞机切换主页
- * Create by Sundy on 2017/8/31
+ * 飞机自检
+ * Create by sundy On 2017/8/31
  */
-class FlyFragment : BaseFragment() {
+class PVFlyOneselfCheckActivity : BaseActivity() {
     /**
      * 接收上个界面的数据
      */
@@ -22,7 +21,7 @@ class FlyFragment : BaseFragment() {
      * 绑定视图
      */
     override fun bindLayout(): Int {
-      return R.layout.pv_main_fly_layout
+       return R.layout.pv_fly_oneself_check_layout
     }
 
     /**
@@ -33,7 +32,7 @@ class FlyFragment : BaseFragment() {
     }
 
     /**
-     * 处理业务
+     * 业务操作
      */
     override fun doBusiness() {
 
@@ -42,5 +41,4 @@ class FlyFragment : BaseFragment() {
     override fun onWidgetClick(view: View) {
 
     }
-
 }

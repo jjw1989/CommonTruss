@@ -46,14 +46,14 @@ abstract class BaseFragment : Fragment(), IBaseView {
 
     override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        var bundle: Bundle = arguments
+        var bundle: Bundle ?= arguments
         initData(bundle)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         mActivity = activity as BaseActivity?
-        initView(savedInstanceState!!, contentView!!)
+        initView(savedInstanceState, contentView)
         doBusiness()
     }
 
