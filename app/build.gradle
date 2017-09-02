@@ -58,5 +58,6 @@ dependencies {
     kapt 'com.alibaba:arouter-compiler:1.1.2'
     implementation 'com.alibaba:arouter-annotation:1.0.3'
     implementation rootProject.ext.dependencies.supportv4
+    implementation 'pub.devrel:easypermissions:1.0.0'
 
 }
