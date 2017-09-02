@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.powervision.gcs.R
+import com.powervision.gcs.base.BaseActivity
 import com.powervision.gcs.view.seekbar.ProgressItem
 import kotlinx.android.synthetic.main.pv_fly_controller_manager_layout.*
 
@@ -14,7 +15,41 @@ import kotlinx.android.synthetic.main.pv_fly_controller_manager_layout.*
  * Create by Sundy on 2017/8/29
  */
 @Route(path = "/aty/fly/flight")
-class PVFlightControllerActivity : AppCompatActivity() {
+class PVFlightControllerActivity : BaseActivity() {
+
+    /**
+     * 接受数据
+     */
+    override fun initData(bundle: Bundle?) {
+
+    }
+
+    /**
+     * 绑定视图
+     */
+    override fun bindLayout(): Int {
+
+        return R.layout.pv_fly_controller_manager_layout
+    }
+
+    /**
+     * 绑定控件
+     */
+    override fun initView(savedInstanceState: Bundle?, view: View?) {
+       setScreenArrts()
+    }
+
+    /**
+     * 业务操作
+     */
+    override fun doBusiness() {
+
+    }
+
+    override fun onWidgetClick(view: View) {
+
+    }
+
     private val totalSpan = 1500f
     private val redSpan = 500f
     private val greenSpan = 500f
@@ -22,11 +57,6 @@ class PVFlightControllerActivity : AppCompatActivity() {
     var view: View? = null
     private var mProgressItem: ProgressItem? = null
     private var progressItemList: ArrayList<ProgressItem>? = null
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.pv_fly_controller_manager_layout)
-        initDataToSeekbar()
-    }
 
     private fun initDataToSeekbar() {
         progressItemList = ArrayList()
@@ -48,8 +78,8 @@ class PVFlightControllerActivity : AppCompatActivity() {
         mProgressItem!!.color = R.color.yellow
         progressItemList!!.add(mProgressItem!!)
 
-        seekBar.initData(progressItemList)
-        seekBar.invalidate()
+//        seekBar.initData(progressItemList)
+//        seekBar.invalidate()
 
     }
 }

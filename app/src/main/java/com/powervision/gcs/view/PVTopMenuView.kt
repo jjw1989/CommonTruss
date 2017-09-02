@@ -15,4 +15,6 @@ class PVTopMenuView(context: Context?, attrs: AttributeSet?) : LinearLayout(cont
     init {
        View.inflate(context, R.layout.pv_topmenu_layout,this)
     }
+
+
 }
