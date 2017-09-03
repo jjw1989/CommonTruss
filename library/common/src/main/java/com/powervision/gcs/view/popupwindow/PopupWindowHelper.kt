@@ -29,7 +29,7 @@ class PopupWindowHelper(view: View) {
      * 在anchor的下面弹出显示
      */
     fun showAsDropDown(anchor: View) {
-        mPopupWindow!!.showAsDropDown(anchor)
+        showAsDropDown(anchor,0,0)
     }
 
     /**
@@ -63,7 +63,6 @@ class PopupWindowHelper(view: View) {
      * 在anchor的上面弹出
      */
     fun showAsPopUp(anchor: View,xoff: Int,yoff: Int){
-        showAsPopUp(anchor,xoff,yoff)
         initPopupWindow(TYPE_WRAP_CONTENT)
         mPopupWindow!!.animationStyle= R.style.AnimationUpPopup
         popupView!!.measure(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT)

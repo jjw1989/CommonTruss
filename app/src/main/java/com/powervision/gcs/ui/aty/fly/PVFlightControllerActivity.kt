@@ -2,10 +2,12 @@ package com.powervision.gcs.ui.aty.fly
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.Gravity
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.powervision.gcs.R
 import com.powervision.gcs.base.BaseActivity
+import com.powervision.gcs.view.popupwindow.PopupWindowHelper
 import com.powervision.gcs.view.seekbar.ProgressItem
 import kotlinx.android.synthetic.main.pv_fly_controller_manager_layout.*
 
@@ -38,16 +40,24 @@ class PVFlightControllerActivity : BaseActivity() {
     override fun initView(savedInstanceState: Bundle?, view: View?) {
        setScreenArrts()
     }
-
+    var helper:PopupWindowHelper?=null
     /**
      * 业务操作
      */
     override fun doBusiness() {
-
+        var popupView=View.inflate(this,R.layout.pv_test,null)
+         helper=   PopupWindowHelper(popupView)
+       button2.setOnClickListener(this)
     }
 
     override fun onWidgetClick(view: View) {
-
+       when(view.id){
+          // R.id.button2->helper!!.showAsPopUp(view!!)
+          // R.id.button2->helper!!.showAsDropDown(view!!)
+          // R.id.button2->helper!!.showAtLocation(view!!,Gravity.TOP,0,0)
+          // R.id.button2->helper!!.showFromBottom(view!!)
+           R.id.button2->helper!!.showFromTop(view!!)
+       }
     }
 
     private val totalSpan = 1500f
