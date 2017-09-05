@@ -7,6 +7,9 @@ import com.powervision.powersdk.param.*;
 import com.powervision.powersdk.callback.*;
 import com.powervision.powersdk.callback.CameraCallback.*;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 /**
  *
  */
@@ -32,12 +35,12 @@ public class PowerSDK {
     /**
      *
      */
-    private CameraListener cameraListener;
+    private CameraCallback.CameraListener cameraListener;
 
     /**
      *
      */
-    private CameraParamListener cameraParamListener;
+    private CameraCallback.CameraParamListener cameraParamListener;
 
     /**
      *
@@ -719,6 +722,31 @@ public class PowerSDK {
      */
     public int setParameter(String paramId, float value) {
         return JniNatives.setParameter(paramId, value);
+    }
+
+    private Timer timer = new Timer();
+    private TimerTask timerTask;
+    /**
+     * 激活方法
+     *
+     * 防止其他方法回调onSysdoSetvalitekeyStatusSuccess
+     * ParameterManager中的PV_V_KEY_FLAG消息不准确
+     * */
+    public int activate(float param){
+        JniNatives.activateFlagPowerSDK = true;
+        int res = this.setParameter("PV_V_KEY_FLAG", param);
+
+        if(timerTask != null)
+            timerTask.cancel();
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+                JniNatives.activateFlagPowerSDK = false;
+            }
+        };
+        timer.schedule(timerTask, 2000);
+
+        return res;
     }
 
     /**

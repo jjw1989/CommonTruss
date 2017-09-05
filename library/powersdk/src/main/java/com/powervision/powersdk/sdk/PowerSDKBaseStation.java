@@ -103,6 +103,13 @@ public class PowerSDKBaseStation {
     }
 
     /**
+     * 设置地面端国家码
+     * */
+    public boolean setGroundCountryCode(int countryCode){
+        return JniNatives.setGroundCountryCode(countryCode);
+    }
+
+    /**
      * 获取地面端Model码
      * */
     public boolean getGroundModel(){
@@ -115,6 +122,29 @@ public class PowerSDKBaseStation {
     public boolean getGroundSN(){
         return JniNatives.getGroundSN();
     }
+
+    /**
+     * 设置地面端SN码
+     * */
+    public boolean setGroundSN(String SN){
+        return JniNatives.setGroundSN(SN);
+    }
+
+
+    /**
+     * 获取地面端网络ID
+     * */
+    public boolean getGroundNetworkId(){
+        return JniNatives.getGroundNetworkId();
+    }
+
+    /**
+     * 设置地面端网络ID
+     * */
+    public boolean setGroundNetworkId(String networkId){
+        return JniNatives.setGroundNetworkId(networkId);
+    }
+
 
     /**
      * 获取地面端主控硬件版本号
@@ -183,12 +213,54 @@ public class PowerSDKBaseStation {
         return JniNatives.disconnectWithAir();
     }
 
+    public boolean getAirChannel(){
+        return JniNatives.getAirChannel();
+    }
+
+    public boolean setAirChannel(int channel){
+        return JniNatives.setAirChannel(channel);
+    }
+
+    public boolean getAirTxPower(){
+        return JniNatives.getAirTxPower();
+    }
+
+    public boolean setAirTxPower(int txPower){
+        return JniNatives.setAirTxPower(txPower);
+    }
+
+    /**
+     * 获取天空端国家码
+     * */
+    public boolean getAirCountryCode(){
+        return JniNatives.getAirCountryCode();
+    }
+
+    /**
+     * 设置天空端国家码
+     * */
+    public boolean setAirCountryCode(int countryCode){
+        return JniNatives.setAirCountryCode(countryCode);
+    }
+
     public boolean getAirModel(){
         return JniNatives.getAirModel();
     }
 
     public boolean getAirSN(){
         return JniNatives.getAirSN();
+    }
+
+    public boolean getAirNetworkId(){
+        return JniNatives.getAirNetworkId();
+    }
+
+    public boolean setAirNetworkId(String networkId){
+        return JniNatives.setAirNetworkId(networkId);
+    }
+
+    public boolean setAirSN(String SN){
+        return JniNatives.setAirSN(SN);
     }
 
     public boolean getAirMainCtrlHWVersion(){
@@ -243,6 +315,13 @@ public class PowerSDKBaseStation {
         return JniNatives.setRFTxPower(txPower);
     }
 
+    public boolean setRFNetworkId(String networkId){
+        return JniNatives.setRFNetworkId(networkId);
+    }
+    public boolean getRFNetworkId(){
+        return JniNatives.getRFNetworkId();
+    }
+
     public boolean applyRFConfig(){
         return JniNatives.applyRFConfig();
     }
@@ -265,6 +344,8 @@ public class PowerSDKBaseStation {
 
     private BaseStationCallback.DisconnectToGroundListener disconnectToGroundListener;
     private BaseStationCallback.DisconnectToAirListener disconnectToAirListener;
+    private BaseStationCallback.ConnectedToGroundListener connectedToGroundListener;
+    private BaseStationCallback.ConnectedToAirListener connectedToAirListener;
     private BaseStationCallback.IsPvLinkListener isPvLinkListener;
     private BaseStationCallback.GetApSSIDListener getApSSIDListener;
     private BaseStationCallback.SetApSSIDListener setApSSIDListener;
@@ -277,8 +358,12 @@ public class PowerSDKBaseStation {
     private BaseStationCallback.GetGroundTxPowerListener getGroundTxPowerListener;
     private BaseStationCallback.SetGroundTxPowerListener setGroundTxPowerListener;
     private BaseStationCallback.GetGroundCountryCodeListener getGroundCountryCodeListener;
+    private BaseStationCallback.SetGroundCountryCodeListener setGroundCountryCodeListener;
     private BaseStationCallback.GetGroundModelListener getGroundModelListener;
     private BaseStationCallback.GetGroundSNListener getGroundSNListener;
+    private BaseStationCallback.SetGroundSNListener setGroundSNListener;
+    private BaseStationCallback.GetGroundNetworkIdListener getGroundNetworkIdListener;
+    private BaseStationCallback.SetGroundNetworkIdListener setGroundNetworkIdListener;
     private BaseStationCallback.GetGroundMainCtrlHWVersionListener getGroundMainCtrlHWVersionListener;
     private BaseStationCallback.GetGroundMainCtrlSWVersionListener getGroundMainCtrlSWVersionListener;
     private BaseStationCallback.GetGroundRFHWVersionListener getGroundRFHWVersionListener;
@@ -391,9 +476,113 @@ public class PowerSDKBaseStation {
     }
 
     private BaseStationCallback.GetAirCountryCodeListener getAirCountryCodeListener;
+    private BaseStationCallback.SetAirCountryCodeListener setAirCountryCodeListener;
     private BaseStationCallback.GetAirModelListener getAirModelListener;
     private BaseStationCallback.GetAirSNListener getAirSNListener;
+    private BaseStationCallback.SetAirSNListener setAirSNListener;
+
+    public BaseStationCallback.SetAirSNListener getSetAirSNListener() {
+        return setAirSNListener;
+    }
+
+    public void setSetAirSNListener(BaseStationCallback.SetAirSNListener setAirSNListener) {
+        this.setAirSNListener = setAirSNListener;
+    }
+
+    private BaseStationCallback.GetAirNetworkIdListener getAirNetworkIdListener;
+    private BaseStationCallback.SetAirNetworkIdListener setAirNetworkIdListener;
+    private BaseStationCallback.GetRFNetworkIdListener getRFNetworkIdListener;
+    private BaseStationCallback.SetRFNetworkIdListener setRFNetworkIdListener;
     private BaseStationCallback.GetAirMainCtrlHWVersionListener getAirMainCtrlHWVersionListener;
+
+    public BaseStationCallback.ConnectedToGroundListener getConnectedToGroundListener() {
+        return connectedToGroundListener;
+    }
+
+    public void setConnectedToGroundListener(BaseStationCallback.ConnectedToGroundListener connectedToGroundListener) {
+        this.connectedToGroundListener = connectedToGroundListener;
+    }
+
+    public BaseStationCallback.ConnectedToAirListener getConnectedToAirListener() {
+        return connectedToAirListener;
+    }
+
+    public void setConnectedToAirListener(BaseStationCallback.ConnectedToAirListener connectedToAirListener) {
+        this.connectedToAirListener = connectedToAirListener;
+    }
+
+    public BaseStationCallback.SetGroundCountryCodeListener getSetGroundCountryCodeListener() {
+        return setGroundCountryCodeListener;
+    }
+
+    public void setSetGroundCountryCodeListener(BaseStationCallback.SetGroundCountryCodeListener setGroundCountryCodeListener) {
+        this.setGroundCountryCodeListener = setGroundCountryCodeListener;
+    }
+
+    public BaseStationCallback.SetGroundSNListener getSetGroundSNListener() {
+        return setGroundSNListener;
+    }
+
+    public void setSetGroundSNListener(BaseStationCallback.SetGroundSNListener setGroundSNListener) {
+        this.setGroundSNListener = setGroundSNListener;
+    }
+
+    public BaseStationCallback.GetGroundNetworkIdListener getGetGroundNetworkIdListener() {
+        return getGroundNetworkIdListener;
+    }
+
+    public void setGetGroundNetworkIdListener(BaseStationCallback.GetGroundNetworkIdListener getGroundNetworkIdListener) {
+        this.getGroundNetworkIdListener = getGroundNetworkIdListener;
+    }
+
+    public BaseStationCallback.SetGroundNetworkIdListener getSetGroundNetworkIdListener() {
+        return setGroundNetworkIdListener;
+    }
+
+    public void setSetGroundNetworkIdListener(BaseStationCallback.SetGroundNetworkIdListener setGroundNetworkIdListener) {
+        this.setGroundNetworkIdListener = setGroundNetworkIdListener;
+    }
+
+    public BaseStationCallback.SetAirCountryCodeListener getSetAirCountryCodeListener() {
+        return setAirCountryCodeListener;
+    }
+
+    public void setSetAirCountryCodeListener(BaseStationCallback.SetAirCountryCodeListener setAirCountryCodeListener) {
+        this.setAirCountryCodeListener = setAirCountryCodeListener;
+    }
+
+    public BaseStationCallback.GetAirNetworkIdListener getGetAirNetworkIdListener() {
+        return getAirNetworkIdListener;
+    }
+
+    public void setGetAirNetworkIdListener(BaseStationCallback.GetAirNetworkIdListener getAirNetworkIdListener) {
+        this.getAirNetworkIdListener = getAirNetworkIdListener;
+    }
+
+    public BaseStationCallback.SetAirNetworkIdListener getSetAirNetworkIdListener() {
+        return setAirNetworkIdListener;
+    }
+
+    public void setSetAirNetworkIdListener(BaseStationCallback.SetAirNetworkIdListener setAirNetworkIdListener) {
+        this.setAirNetworkIdListener = setAirNetworkIdListener;
+    }
+
+    public BaseStationCallback.GetRFNetworkIdListener getGetRFNetworkIdListener() {
+        return getRFNetworkIdListener;
+    }
+
+    public void setGetRFNetworkIdListener(BaseStationCallback.GetRFNetworkIdListener getRFNetworkIdListener) {
+        this.getRFNetworkIdListener = getRFNetworkIdListener;
+    }
+
+    public BaseStationCallback.SetRFNetworkIdListener getSetRFNetworkIdListener() {
+        return setRFNetworkIdListener;
+    }
+
+    public void setSetRFNetworkIdListener(BaseStationCallback.SetRFNetworkIdListener setRFNetworkIdListener) {
+        this.setRFNetworkIdListener = setRFNetworkIdListener;
+    }
+
     private BaseStationCallback.GetAirMainCtrlSWVersionListener getAirMainCtrlSWVersionListener;
     private BaseStationCallback.GetAirRFHWVersionListener getAirRFHWVersionListener;
     private BaseStationCallback.GetAirRFSWVersionListener getAirRFSWVersionListener;

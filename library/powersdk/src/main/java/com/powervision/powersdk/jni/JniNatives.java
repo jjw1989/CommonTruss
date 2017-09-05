@@ -18,13 +18,16 @@ import com.powervision.powersdk.callback.SystemStatusCallback;
 import com.powervision.powersdk.sdk.PowerSDKBaseStation;
 import com.powervision.powersdk.sdk.PowerSDKCamera;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
 
 /**
  *
  */
 public class JniNatives {
     static {
-        System.loadLibrary("pvsdk_api-release");
+        System.loadLibrary("pvsdk_api");
         System.loadLibrary("pvsdk_api_wrapper");
     }
 
@@ -735,8 +738,12 @@ public class JniNatives {
     public static native boolean getGroundTxPower();
     public static native boolean setGroundTxPower(int txPower);
     public static native boolean getGroundCountryCode();
+    public static native boolean setGroundCountryCode(int countryCode);
     public static native boolean getGroundModel();
     public static native boolean getGroundSN();
+    public static native boolean setGroundSN(String SN);
+    public static native boolean getGroundNetworkId();
+    public static native boolean setGroundNetworkId(String networkId);
     public static native boolean getGroundMainCtrlHWVersion();
     public static native boolean getGroundMainCtrlSWVersion();
     public static native boolean getGroundRFHWVersion();
@@ -752,8 +759,13 @@ public class JniNatives {
     public static native boolean setAirChannel(int channel);
     public static native boolean getAirTxPower();
     public static native boolean setAirTxPower(int txPower);
+    public static native boolean getAirCountryCode();
+    public static native boolean setAirCountryCode(int countryCode);
     public static native boolean getAirModel();
     public static native boolean getAirSN();
+    public static native boolean setAirSN(String sn);
+    public static native boolean getAirNetworkId();
+    public static native boolean setAirNetworkId(String networkId);
     public static native boolean getAirMainCtrlHWVersion();
     public static native boolean getAirMainCtrlSWVersion();
     public static native boolean getAirRFHWVersion();
@@ -767,6 +779,8 @@ public class JniNatives {
     public static native boolean setRFChannel(int channel);
     public static native boolean getRFTxPower();
     public static native boolean setRFTxPower(int txPower);
+    public static native boolean getRFNetworkId();
+    public static native boolean setRFNetworkId(String networkId);
     public static native boolean applyRFConfig();
     public static native boolean getVideoResolution();
     public static native boolean setVideoResolution(int resolution);
@@ -1624,6 +1638,7 @@ public class JniNatives {
      * @param status
      * @return
      */
+    public static boolean activateFlagPowerSDK = false;
     public static int sysDoNotify(int status) {
         if (PowerSDK.getInstance().getSysDoListener() == null) {
             return JNI_NATIVES_RETURN_VALUE_FAILED;
@@ -1643,9 +1658,13 @@ public class JniNatives {
                 PowerSDK.getInstance().getSysDoListener().onSysdoGetvalitekeyStatusError();
                 break;
             case SystemStatusCallback.SysDoListener.PVSDK_SYSDO_SETVALITEKEYSTATUS_SUCCESS:
-                PowerSDK.getInstance().getSysDoListener().onSysdoSetvalitekeyStatusSuccess();
+                if (activateFlagPowerSDK) {
+                    PowerSDK.getInstance().getSysDoListener().onSysdoSetvalitekeyStatusSuccess();
+                    activateFlagPowerSDK = false;
+                }
                 break;
             case SystemStatusCallback.SysDoListener.PVSDK_SYSDO_SETVALITEKEYSTATUS_ERROR:
+                activateFlagPowerSDK = false;
                 PowerSDK.getInstance().getSysDoListener().onSysdoSetvalitekeyStatusError();
                 break;
             case SystemStatusCallback.SysDoListener.PVSDK_SYSDO_PSN_SUCCESS:
@@ -2206,7 +2225,7 @@ public class JniNatives {
         if(PowerSDK.getInstance().getElectronicSpeedControlListener() == null){
             return JNI_NATIVES_RETURN_VALUE_FAILED;
         }
-
+	
 	String[] dataArr = data.split(",");
 
         SpeedControlNotifyParam sc=new SpeedControlNotifyParam();
@@ -2244,6 +2263,22 @@ public class JniNatives {
         }
 
         PowerSDKBaseStation.getInstance().getDisconnectToAirListener().onDisconnectToAir();
+    }
+
+    public static void connectedToGroundNotify(){
+        if(PowerSDKBaseStation.getInstance().getConnectedToGroundListener() == null){
+            return;
+        }
+
+        PowerSDKBaseStation.getInstance().getConnectedToGroundListener().connectedToGround();
+    }
+
+    public static void connectedToAirNotify(){
+        if(PowerSDKBaseStation.getInstance().getConnectedToAirListener() == null){
+            return;
+        }
+
+        PowerSDKBaseStation.getInstance().getConnectedToAirListener().connectedToAir();
     }
 
     public static void isPvLinkNotify(boolean result){
@@ -2334,6 +2369,14 @@ public class JniNatives {
         PowerSDKBaseStation.getInstance().getGetGroundCountryCodeListener().getGroundCountryCode(country_code, result);
     }
 
+    public static void setGroundCountryCodeNotify(int country_code, boolean result){
+        if(PowerSDKBaseStation.getInstance().getSetGroundCountryCodeListener() == null){
+            return;
+        }
+
+        PowerSDKBaseStation.getInstance().getSetGroundCountryCodeListener().setGroundCountryCode(country_code, result);
+    }
+
     public static void getGroundModelNotify(String model, boolean result){
         if(PowerSDKBaseStation.getInstance().getGetGroundModelListener() == null){
             return;
@@ -2348,6 +2391,30 @@ public class JniNatives {
         }
 
         PowerSDKBaseStation.getInstance().getGetGroundSNListener().getGroundSN(sn, result);
+    }
+
+    public static void setGroundSNNotify(String sn, boolean result){
+        if(PowerSDKBaseStation.getInstance().getSetGroundSNListener() == null){
+            return;
+        }
+
+        PowerSDKBaseStation.getInstance().getSetGroundSNListener().setGroundSN(sn, result);
+    }
+
+    public static void getGroundNetworkIdNotify(String pnetwork_id, boolean result){
+        if(PowerSDKBaseStation.getInstance().getGetGroundNetworkIdListener() == null){
+            return;
+        }
+
+        PowerSDKBaseStation.getInstance().getGetGroundNetworkIdListener().getGroundNetworkId(pnetwork_id, result);
+    }
+
+    public static void setGroundNetworkIdNotify(String pnetwork_id, boolean result){
+        if(PowerSDKBaseStation.getInstance().getSetGroundNetworkIdListener() == null){
+            return;
+        }
+
+        PowerSDKBaseStation.getInstance().getSetGroundNetworkIdListener().setGroundNetworkId(pnetwork_id, result);
     }
 
     public static void getGroundMainCtrlHWVersionNotify(String version, boolean result){
@@ -2462,6 +2529,14 @@ public class JniNatives {
         PowerSDKBaseStation.getInstance().getGetAirCountryCodeListener().onGetAirCountryCode(countryCode, result);
     }
 
+    public static void setAirCountryCodeNotify(int countryCode, boolean result){
+        if(PowerSDKBaseStation.getInstance().getSetAirCountryCodeListener() == null){
+            return;
+        }
+
+        PowerSDKBaseStation.getInstance().getSetAirCountryCodeListener().setAirCountryCode(countryCode, result);
+    }
+
     public static void getAirModelNotify(String model, boolean result){
         if(PowerSDKBaseStation.getInstance().getGetAirModelListener() == null){
             return;
@@ -2476,6 +2551,30 @@ public class JniNatives {
         }
 
         PowerSDKBaseStation.getInstance().getGetAirSNListener().getAirSN(sn, result);
+    }
+
+    public static void setAirSNNotify(String sn, boolean result){
+        if(PowerSDKBaseStation.getInstance().getSetAirSNListener() == null){
+            return;
+        }
+
+        PowerSDKBaseStation.getInstance().getSetAirSNListener().setAirSN(sn, result);
+    }
+
+    public static void getAirNetworkIdNotify(String pnetwork_id, boolean result){
+        if(PowerSDKBaseStation.getInstance().getGetAirNetworkIdListener() == null){
+            return;
+        }
+
+        PowerSDKBaseStation.getInstance().getGetAirNetworkIdListener().getAirNetworkId(pnetwork_id, result);
+    }
+
+    public static void setAirNetworkIdNotify(String pnetwork_id, boolean result){
+        if(PowerSDKBaseStation.getInstance().getSetAirNetworkIdListener() == null){
+            return;
+        }
+
+        PowerSDKBaseStation.getInstance().getSetAirNetworkIdListener().setAirNetworkId(pnetwork_id, result);
     }
 
     public static void getAirMainCtrlHWVersionNotify(String version, boolean result){
@@ -2508,6 +2607,14 @@ public class JniNatives {
         }
 
         PowerSDKBaseStation.getInstance().getGetAirRFSWVersionListener().getAirRFSWVersion(version, result);
+    }
+
+    public static void getAirRFSignalQualityNotify(int ssid, int snr, int noise, boolean result){
+        if(PowerSDKBaseStation.getInstance().getGetAirRFSignalQualityListener() == null){
+            return;
+        }
+
+        PowerSDKBaseStation.getInstance().getGetAirRFSignalQualityListener().getAirRFSignalQuality(ssid, snr, noise, result);
     }
 
     public static void resetAirRFNotify(boolean result){
@@ -2572,6 +2679,22 @@ public class JniNatives {
         }
 
         PowerSDKBaseStation.getInstance().getSetRFTxPowerListener().setRFTxPower(tx_power, result);
+    }
+
+    public static void getRFNetworkIdNotify(String pnetwork_id, boolean result){
+        if(PowerSDKBaseStation.getInstance().getGetRFNetworkIdListener() == null){
+            return;
+        }
+
+        PowerSDKBaseStation.getInstance().getGetRFNetworkIdListener().getRFNetworkId(pnetwork_id, result);
+    }
+
+    public static void setRFNetworkIdNotify(String pnetwork_id, boolean result){
+        if(PowerSDKBaseStation.getInstance().getSetRFNetworkIdListener() == null){
+            return;
+        }
+
+        PowerSDKBaseStation.getInstance().getSetRFNetworkIdListener().setRFNetworkId(pnetwork_id, result);
     }
 
     public static void applyRFConfigNotify(boolean result){

@@ -11,6 +11,13 @@ public class BaseStationCallback {
     public interface DisconnectToAirListener {
         void onDisconnectToAir();
     }
+    public interface ConnectedToGroundListener {
+        void connectedToGround();
+    }
+
+    public interface ConnectedToAirListener {
+        void connectedToAir();
+    }
 
     public interface IsPvLinkListener {
         void onIsPvLink(boolean result);
@@ -56,12 +63,28 @@ public class BaseStationCallback {
         void getGroundCountryCode(int country_code, boolean result);
     }
 
+    public interface SetGroundCountryCodeListener {
+        void setGroundCountryCode(int country_code, boolean result);
+    }
+
     public interface GetGroundModelListener {
         void getGroundModel(String model, boolean result);
     }
 
     public interface GetGroundSNListener {
         void getGroundSN(String sn, boolean result);
+    }
+
+    public interface SetGroundSNListener {
+        void setGroundSN(String sn, boolean result);
+    }
+
+    public interface GetGroundNetworkIdListener {
+        void getGroundNetworkId(String pnetwork_id, boolean result);
+    }
+
+    public interface SetGroundNetworkIdListener {
+        void setGroundNetworkId(String pnetwork_id, boolean result);
     }
 
     public interface GetGroundMainCtrlHWVersionListener {
@@ -120,14 +143,41 @@ public class BaseStationCallback {
         void getAirModel(String model, boolean result);
     }
 
+    public interface SetAirModelListener {
+        void setAirModel(String model, boolean result);
+    }
+
     public interface GetAirCountryCodeListener {
         void onGetAirCountryCode(int countryCode, boolean result);
+    }
+
+    public interface SetAirCountryCodeListener {
+        void setAirCountryCode(int countryCode, boolean result);
     }
 
     public interface GetAirSNListener {
         void getAirSN(String sn, boolean result);
     }
 
+    public interface SetAirSNListener {
+        void setAirSN(String sn, boolean result);
+    }
+
+    public interface GetAirNetworkIdListener {
+        void getAirNetworkId(String pnetwork_id, boolean result);
+    }
+
+    public interface SetAirNetworkIdListener {
+        void setAirNetworkId(String pnetwork_id, boolean result);
+    }
+
+    public interface GetRFNetworkIdListener {
+        void getRFNetworkId(String pnetwork_id, boolean result);
+    }
+
+    public interface SetRFNetworkIdListener {
+        void setRFNetworkId(String pnetwork_id, boolean result);
+    }
     public interface GetAirMainCtrlHWVersionListener {
         void getAirMainCtrlHWVersion(String version, boolean result);
     }
