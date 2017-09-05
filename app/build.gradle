@@ -50,6 +50,7 @@ dependencies {
     implementation project(':library:common')
     implementation project(':library:greendao')
     implementation project(':library:powersdk')
+    implementation project(':library:network')
     implementation rootProject.ext.dependencies.appcompatv7
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
@@ -59,5 +60,4 @@ dependencies {
     implementation 'com.alibaba:arouter-annotation:1.0.3'
     implementation rootProject.ext.dependencies.supportv4
     implementation 'pub.devrel:easypermissions:1.0.0'
-
 }

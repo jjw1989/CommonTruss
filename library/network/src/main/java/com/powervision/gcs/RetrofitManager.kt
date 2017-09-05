@@ -1,7 +1,10 @@
 package com.powervision.gcs
 
+import com.powervision.gcs.config.ApiUrl
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
+import retrofit2.converter.jackson.JacksonConverterFactory
 import java.util.concurrent.TimeUnit
 
 /**
@@ -23,9 +26,14 @@ class RetrofitManager {
                     .connectTimeout(10000,TimeUnit.MILLISECONDS)
                     .build()
         }
+
         if (retrofit==null){
             retrofit=Retrofit.Builder()
-                    .baseUrl()
+                    .baseUrl(ApiUrl.getBaseUrl(false))
+                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())//用于返回Rxjava调用,非必须
+                    .addConverterFactory(JacksonConverterFactory.create())
+                    .client(okHttpClient)
+                    .build()
         }
     }
 
