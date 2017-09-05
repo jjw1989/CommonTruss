@@ -1,8 +1,6 @@
 package com.powervision.gcs.ui.aty.fly
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
-import android.view.Gravity
 import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.powervision.gcs.R

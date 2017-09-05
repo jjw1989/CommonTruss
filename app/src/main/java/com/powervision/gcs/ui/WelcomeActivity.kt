@@ -1,25 +1,33 @@
 package com.powervision.gcs.ui
 
+import android.Manifest
 import android.animation.Animator
-import android.animation.AnimatorSet
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
 import android.os.Build
 import android.os.Bundle
-import android.os.Handler
 import android.support.annotation.RequiresApi
+import android.util.Log
 import android.view.View
 import android.view.animation.AccelerateInterpolator
+import android.widget.Toast
 import com.alibaba.android.arouter.launcher.ARouter
 import com.powervision.gcs.R
 import com.powervision.gcs.base.BaseActivity
 import kotlinx.android.synthetic.main.gcs_welcome_layout.*
+import pub.devrel.easypermissions.AfterPermissionGranted
+import pub.devrel.easypermissions.EasyPermissions
+import pub.devrel.easypermissions.AppSettingsDialog
+
+
+
 
 /**
  * 欢迎页面
  * Create by Sundy on 2017/8/8
  */
-class WelcomeActivity : BaseActivity() {
+class WelcomeActivity : BaseActivity(), EasyPermissions.PermissionCallbacks {
+    private val ADD_PERMISSIONS = arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE)
     /**
      * 接收数据
      */
@@ -48,18 +56,19 @@ class WelcomeActivity : BaseActivity() {
     override fun doBusiness() {
         setScreenArrts()
         initAnim()
+        onRequestPermissions()
     }
 
     @RequiresApi(Build.VERSION_CODES.HONEYCOMB)
     private fun initAnim() {
-        val alpha:PropertyValuesHolder= PropertyValuesHolder.ofFloat("alpha",0.3f,1.0f)
-        val scaleX:PropertyValuesHolder= PropertyValuesHolder.ofFloat("scaleX",0.3f,1.0f)
-        val scaleY:PropertyValuesHolder= PropertyValuesHolder.ofFloat("scaleY",0.3f,1.0f)
-        val animator :ObjectAnimator= ObjectAnimator.ofPropertyValuesHolder(imgLogo,alpha,scaleX,scaleY)
-        animator .interpolator=AccelerateInterpolator()
-        animator .duration=1000
+        val alpha: PropertyValuesHolder = PropertyValuesHolder.ofFloat("alpha", 0.3f, 1.0f)
+        val scaleX: PropertyValuesHolder = PropertyValuesHolder.ofFloat("scaleX", 0.3f, 1.0f)
+        val scaleY: PropertyValuesHolder = PropertyValuesHolder.ofFloat("scaleY", 0.3f, 1.0f)
+        val animator: ObjectAnimator = ObjectAnimator.ofPropertyValuesHolder(imgLogo, alpha, scaleX, scaleY)
+        animator.interpolator = AccelerateInterpolator()
+        animator.duration = 1000
         animator.start()
-        animator .addListener(object :Animator.AnimatorListener{
+        animator.addListener(object : Animator.AnimatorListener {
             override fun onAnimationRepeat(p0: Animator?) {
 
             }
@@ -89,5 +98,34 @@ class WelcomeActivity : BaseActivity() {
 
     }
 
+    fun requestBasicPermission(): Boolean {
+        return EasyPermissions.hasPermissions(this, *ADD_PERMISSIONS)
+    }
 
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        EasyPermissions.onRequestPermissionsResult(requestCode, permissions, grantResults, this)
+    }
+
+    override fun onPermissionsDenied(requestCode: Int, perms: MutableList<String>?) {//
+        Log.i("qaz", "111requestCode=$requestCode,perms=$perms")
+
+    }
+
+    override fun onPermissionsGranted(requestCode: Int, perms: MutableList<String>?) { //同意了某些权限可能不是全部
+        Log.i("qaz", "222requestCode=$requestCode,perms=$perms")
+        if (EasyPermissions.somePermissionPermanentlyDenied(this, perms!!)) {
+            AppSettingsDialog.Builder(this).build().show()
+        }
+    }
+
+    @AfterPermissionGranted(1000)
+    fun onRequestPermissions() {
+        if (requestBasicPermission()) {
+            Toast.makeText(this, "已经或得权限", Toast.LENGTH_LONG).show()
+        } else {
+            EasyPermissions.requestPermissions(this, "请给予应用必要权限，让程序可正常工作", 1000, *ADD_PERMISSIONS)
+            Toast.makeText(this, "没有或得权限", Toast.LENGTH_LONG).show()
+        }
+    }
 }
