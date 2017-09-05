@@ -48,21 +48,18 @@ class WelcomeActivity : BaseActivity() {
     override fun doBusiness() {
         setScreenArrts()
         initAnim()
-
-
     }
 
     @RequiresApi(Build.VERSION_CODES.HONEYCOMB)
     private fun initAnim() {
-        var alpha:PropertyValuesHolder= PropertyValuesHolder.ofFloat("alpha",0.3f,1.0f)
-        var scaleX:PropertyValuesHolder= PropertyValuesHolder.ofFloat("scaleX",0.3f,1.0f)
-        var scaleY:PropertyValuesHolder= PropertyValuesHolder.ofFloat("scaleY",0.3f,1.0f)
-        var obj1:ObjectAnimator= ObjectAnimator.ofPropertyValuesHolder(imgLogo,alpha,scaleX,scaleY)
-        var animatorSet:AnimatorSet= AnimatorSet()
-        animatorSet.interpolator=AccelerateInterpolator()
-        animatorSet.duration=3000
-        animatorSet.play(obj1)
-        animatorSet.addListener(object :Animator.AnimatorListener{
+        val alpha:PropertyValuesHolder= PropertyValuesHolder.ofFloat("alpha",0.3f,1.0f)
+        val scaleX:PropertyValuesHolder= PropertyValuesHolder.ofFloat("scaleX",0.3f,1.0f)
+        val scaleY:PropertyValuesHolder= PropertyValuesHolder.ofFloat("scaleY",0.3f,1.0f)
+        val animator :ObjectAnimator= ObjectAnimator.ofPropertyValuesHolder(imgLogo,alpha,scaleX,scaleY)
+        animator .interpolator=AccelerateInterpolator()
+        animator .duration=1000
+        animator.start()
+        animator .addListener(object :Animator.AnimatorListener{
             override fun onAnimationRepeat(p0: Animator?) {
 
             }
