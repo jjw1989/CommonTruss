@@ -4,8 +4,8 @@ import com.orhanobut.logger.LogLevel;
 import com.orhanobut.logger.Logger;
 
 /**
- * Created by XiaoJianjun on 2017/1/16.
  * Log日志工具，封装logger
+ * Created by sundy on 2017/9/1.
  */
 public class LogUtil {
     /**
