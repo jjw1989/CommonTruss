@@ -1,9 +1,9 @@
 package com.powervision.gcs.api
 
 import com.powervision.gcs.bean.AdModel
+import io.reactivex.Flowable
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /**
  * 广告页接口
@@ -13,6 +13,7 @@ interface ApiAdService {
     /**
      * 获取广告页
      */
-    @GET("")
-    fun  getAdInfo(@Query("ip") ip:String):Observable<AdModel>
+    @FormUrlEncoded
+    @POST()
+    fun  getAdInfo(@Url() url:String, @FieldMap maps:Map<String,String>):Flowable<AdModel>
 }

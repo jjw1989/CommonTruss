@@ -399,6 +399,10 @@ public class PowerSDKBaseStation {
         return isPvLinkListener;
     }
 
+    /**
+     * 新老基站判断入口
+     * @param isPvLinkListener
+     */
     public void setIsPvLinkListener(BaseStationCallback.IsPvLinkListener isPvLinkListener) {
         this.isPvLinkListener = isPvLinkListener;
     }

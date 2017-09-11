@@ -1,10 +1,12 @@
 package com.powervision.gcs
 
+import com.powervision.gcs.api.ApiAdService
 import com.powervision.gcs.config.ApiUrl
 import com.powervision.gcs.utils.JsonUtil
 import com.powervision.gcs.utils.LogUtil
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.reactivestreams.Subscriber
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.jackson.JacksonConverterFactory
@@ -42,6 +44,11 @@ class RetrofitManager {
                     .client(okHttpClient)
                     .build()
         }
+    }
+
+    fun getApiAdservice(): ApiAdService {
+
+        return createService(ApiAdService::class.java)
     }
 
     fun <T> createService(clz: Class<T>): T {
