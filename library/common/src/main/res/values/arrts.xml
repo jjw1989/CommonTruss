@@ -7,5 +7,11 @@
         <attr name="containerId" format="integer|reference" />
         <attr name="navigateTabTextSize" format="dimension|reference" />
     </declare-styleable>
-
+    <declare-styleable name="livebutton">
+        <attr name="pressedHeight" format="dimension"/>
+        <attr name="normalHeight" format="dimension"/>
+        <attr name="backgroundColor" format="color"/>
+        <attr name="shadowColor" format="color"/>
+        <attr name="corners" format="dimension"/>
+    </declare-styleable>
 </resources>

@@ -3,6 +3,7 @@ package com.powervision.gcs.ui
 import android.animation.Animator
 import android.animation.ObjectAnimator
 import android.animation.PropertyValuesHolder
+import android.icu.util.TimeUnit
 import android.os.Build
 import android.os.Bundle
 import android.support.annotation.RequiresApi
@@ -11,9 +12,15 @@ import android.view.animation.AccelerateInterpolator
 import android.widget.Toast
 import com.alibaba.android.arouter.launcher.ARouter
 import com.powervision.gcs.R
+import com.powervision.gcs.RetrofitManager
+import com.powervision.gcs.api.ApiAdService
 import com.powervision.gcs.base.BaseActivity
 import com.powervision.gcs.peimissions.PermissionRequest
 import com.powervision.gcs.utils.LogUtil
+import io.reactivex.*
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.internal.util.HalfSerializer.onNext
+import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.gcs_welcome_layout.*
 
 
@@ -52,6 +59,14 @@ class WelcomeActivity : BaseActivity() {
         setScreenArrts()
         initAnim()
         permissionsRequest()
+        testRxJava()
+    }
+
+    private fun testRxJava() {
+
+
+
+
     }
 
     /**
@@ -62,6 +77,7 @@ class WelcomeActivity : BaseActivity() {
           override fun onSuccessful() {
              Toast.makeText(this@WelcomeActivity,"111111111111111111111111",Toast.LENGTH_LONG).show()
               LogUtil.i("1111111111111111111111111111111111111")
+              initNetWork()
           }
 
           override fun onFailure() {
@@ -70,6 +86,14 @@ class WelcomeActivity : BaseActivity() {
 
       })
         requestPermissons.request()
+    }
+
+    private fun initNetWork() {
+
+//       RetrofitManager.getInstance().createService(ApiAdService::class.java).getAdInfo("").subscribeOn(Schedulers.io())
+//               .unsubscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).su
+
+
     }
 
     @RequiresApi(Build.VERSION_CODES.HONEYCOMB)
