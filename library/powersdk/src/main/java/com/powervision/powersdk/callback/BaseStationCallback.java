@@ -19,6 +19,9 @@ public class BaseStationCallback {
         void connectedToAir();
     }
 
+    /**
+     * 基站类型判断
+     */
     public interface IsPvLinkListener {
         void onIsPvLink(boolean result);
     }
