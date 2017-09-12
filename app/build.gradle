@@ -68,5 +68,4 @@ dependencies {
     kapt 'com.alibaba:arouter-compiler:1.1.2'
     implementation 'com.alibaba:arouter-annotation:1.0.3'
     implementation 'com.zhouyou:rxeasyhttp:2.0.0'
-
 }

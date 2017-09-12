@@ -30,6 +30,7 @@ import kotlinx.android.synthetic.main.gcs_welcome_layout.*
 import java.util.concurrent.TimeUnit
 
 
+
 /**
  * 欢迎页面
  * Create by Sundy on 2017/8/8
@@ -66,6 +67,14 @@ class WelcomeActivity : BaseActivity() {
         setScreenArrts()
         initAnim()
         permissionsRequest()
+        testRxJava()
+    }
+
+    private fun testRxJava() {
+
+
+
+
     }
 
     /**
@@ -94,9 +103,17 @@ class WelcomeActivity : BaseActivity() {
 
             override fun onAnimationEnd(p0: Animator?) {
                 //ARouter.getInstance().build("/set/plane").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
+
                 //    ARouter.getInstance().build("/test/permission").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
                 // ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
                 sendSMS()
+            //    ARouter.getInstance().build("/test/permission").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
+                ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
+//                ARouter.getInstance()
+//                        .build("/aty/fly/flight")
+//                        .withTransition(R.anim.push_right_in,R.anim.push_right_out)
+//                        .navigation()
+//                finish()
             }
 
             override fun onAnimationCancel(p0: Animator?) {
