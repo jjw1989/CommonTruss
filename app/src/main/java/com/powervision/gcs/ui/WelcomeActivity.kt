@@ -105,12 +105,12 @@ class WelcomeActivity : BaseActivity() {
             override fun onAnimationEnd(p0: Animator?) {
                 //ARouter.getInstance().build("/set/plane").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
             //    ARouter.getInstance().build("/test/permission").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
-                ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
-//                ARouter.getInstance()
-//                        .build("/aty/fly/flight")
-//                        .withTransition(R.anim.push_right_in,R.anim.push_right_out)
-//                        .navigation()
-//                finish()
+              //  ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
+                ARouter.getInstance()
+                        .build("/aty/fly/flight")
+                        .withTransition(R.anim.push_right_in,R.anim.push_right_out)
+                        .navigation()
+                finish()
             }
 
             override fun onAnimationCancel(p0: Animator?) {

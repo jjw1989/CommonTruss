@@ -1,7 +1,9 @@
 package com.powervision.gcs.ui.aty.fly
 
+import android.animation.*
 import android.os.Bundle
 import android.view.View
+import android.view.animation.Animation
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.powervision.gcs.R
 import com.powervision.gcs.base.BaseActivity
@@ -54,7 +56,45 @@ class PVFlightControllerActivity : BaseActivity() {
           // R.id.button2->helper!!.showAsDropDown(view!!)
           // R.id.button2->helper!!.showAtLocation(view!!,Gravity.TOP,0,0)
           // R.id.button2->helper!!.showFromBottom(view!!)
-           R.id.button2->helper!!.showFromTop(view!!)
+         //  R.id.button2->helper!!.showFromTop(view!!)
+           R.id.button2->{
+               val scaleX = PropertyValuesHolder.ofFloat("zoomFromCornerPivotHeight", 1.0f)
+               val scaleY = PropertyValuesHolder.ofFloat("zoomFromCornerPivotHeight", 1.0f)
+               val movingFragmentAnimator = ObjectAnimator.ofPropertyValuesHolder(slView, scaleX, scaleY)
+                 movingFragmentAnimator.duration=1000
+                 movingFragmentAnimator.start()
+               movingFragmentAnimator.addUpdateListener(object :ValueAnimator.AnimatorUpdateListener{
+                   override fun onAnimationUpdate(p0: ValueAnimator?) {
+
+                   }
+
+               })
+                 movingFragmentAnimator.addListener(object : Animator.AnimatorListener{
+                     override fun onAnimationRepeat(p0: Animator?) {
+                         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                     }
+
+                     override fun onAnimationEnd(p0: Animator?) {
+                         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                     }
+
+                     override fun onAnimationCancel(p0: Animator?) {
+                         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                     }
+
+                     override fun onAnimationStart(p0: Animator?) {
+                         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                     }
+
+                 })
+//               val s = AnimatorSet()
+//               s.play(movingFragmentAnimator)
+//               //s.addListener(listener)
+//               s.start()
+//               var set:AnimatorSet= AnimatorInflater.loadAnimator(context,R.animator.zoom_from_left_corner_left_in) as AnimatorSet
+//               set.setTarget(slView)
+//               set.start()
+           }
        }
     }
 
