@@ -66,6 +66,7 @@ class FlyFragment : BaseFragment() {
                 cb!!.onSizeReady(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
                // super.getSize(cb)
             }
+
 //         override  fun onLoadStarted(placeholder: Drawable) {
 //                super.onLoadStarted(placeholder)
 //               // ringProgressBar.setVisibility(View.VISIBLE)
@@ -90,6 +91,7 @@ class FlyFragment : BaseFragment() {
 //                cb.onSizeReady(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
 //            }
         })
+        Log.i("filePath","path11="+Glide.getPhotoCacheDir(context))
     }
 
     override fun onWidgetClick(view: View) {

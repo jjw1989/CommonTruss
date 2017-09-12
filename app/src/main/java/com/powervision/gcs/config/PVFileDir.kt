@@ -31,4 +31,8 @@ object PVFileDir {
      * 固件保存路径
      */
     val firmwarePath = Environment.getExternalStorageDirectory().toString() + "/GCS/firmware/"
+    /**
+     * 广告图片的绝对路径
+     */
+    val splashImagePath = Environment.getExternalStorageDirectory().path + "/GCS/Splash/splash.png"
 }

@@ -3,6 +3,7 @@ package com.powervision.gcs.glide;
 import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.GlideBuilder;
@@ -29,17 +30,27 @@ import okio.ForwardingSource;
 import okio.Okio;
 import okio.Source;
 
+/**
+ * glide配置文件
+ * Create by Sundy on 2017/9/12
+ */
 public class OkHttpProgressGlideModule implements GlideModule {
     @Override
     public void applyOptions(Context context, GlideBuilder builder) {
+        ExternalCacheDiskCacheFactory externalCacheDiskCacheFactory = new ExternalCacheDiskCacheFactory(context);
+        builder.setDiskCache(externalCacheDiskCacheFactory);
+        // 如果配置图片将缓存到SD卡后那么getPhotoCacheDir返回仍然没有变化
+        //Log.i("filePath", "config="+Glide.getPhotoCacheDir(context).getPath());
     }
 
     @Override
     public void registerComponents(Context context, Glide glide, Registry registry) {
+        //网络使用okhttp
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.networkInterceptors().add(createInterceptor(new DispatchingProgressListener()));
-        registry.append(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory(builder.build()));
+        glide.getRegistry().append(GlideUrl.class, InputStream.class, new OkHttpUrlLoader.Factory(builder.build()));
     }
+
     private static Interceptor createInterceptor(final ResponseProgressListener listener) {
         return new Interceptor() {
             @Override
@@ -52,7 +63,6 @@ public class OkHttpProgressGlideModule implements GlideModule {
             }
         };
     }
-
 
 
     public interface UIProgressListener {
