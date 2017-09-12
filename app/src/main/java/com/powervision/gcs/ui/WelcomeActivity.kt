@@ -68,6 +68,8 @@ class WelcomeActivity : BaseActivity() {
         initAnim()
         permissionsRequest()
         testRxJava()
+
+        Log.i("filePath","path="+ context!!.externalCacheDir)
     }
 
     private fun testRxJava() {
