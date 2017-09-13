@@ -1,4 +1,4 @@
-package com.powervision.powersdk;
+package com.powervision.gcs.sdk;
 
 /**
  * 连接配置文件

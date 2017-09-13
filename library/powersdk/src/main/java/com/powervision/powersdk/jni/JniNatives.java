@@ -27,7 +27,7 @@ import java.util.TimerTask;
  */
 public class JniNatives {
     static {
-        System.loadLibrary("pvsdk_api");
+        System.loadLibrary("pvsdk_api-release");
         System.loadLibrary("pvsdk_api_wrapper");
     }
 

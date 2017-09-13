@@ -15,6 +15,8 @@ import com.alibaba.android.arouter.launcher.ARouter
 import com.powervision.gcs.R
 import com.powervision.gcs.base.BaseActivity
 import com.powervision.gcs.config.PVFileDir
+import com.powervision.gcs.sdk.PVConnConfig
+import com.powervision.gcs.sdk.PVConnManager
 import com.powervision.gcs.utils.TFileUtil
 import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.Permission
@@ -24,11 +26,11 @@ import io.reactivex.Observable
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
+import io.reactivex.functions.Action
 import io.reactivex.functions.Consumer
 import io.reactivex.functions.Function
 import kotlinx.android.synthetic.main.gcs_welcome_layout.*
 import java.util.concurrent.TimeUnit
-
 
 
 /**
@@ -69,12 +71,17 @@ class WelcomeActivity : BaseActivity() {
         permissionsRequest()
         testRxJava()
 
-        Log.i("filePath","path="+ context!!.externalCacheDir)
+        Log.i("filePath", "path=" + context!!.externalCacheDir)
     }
 
     private fun testRxJava() {
-
-
+        var manager: PVConnManager = PVConnManager()
+        var config:PVConnConfig = PVConnConfig.Builder().builder()
+        manager.initSDK(config)
+//        Observable.interval(0,6000,TimeUnit.MILLISECONDS)
+//                .subscribe{
+//                    aLong->Log.i("test","along="+aLong)
+//                }
 
 
     }
@@ -109,13 +116,13 @@ class WelcomeActivity : BaseActivity() {
                 //    ARouter.getInstance().build("/test/permission").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
                 // ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
                 sendSMS()
-            //    ARouter.getInstance().build("/test/permission").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
-              //  ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
-                ARouter.getInstance()
-                        .build("/aty/fly/flight")
-                        .withTransition(R.anim.push_right_in,R.anim.push_right_out)
-                        .navigation()
-                finish()
+                //    ARouter.getInstance().build("/test/permission").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
+                //  ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
+//                ARouter.getInstance()
+//                        .build("/aty/fly/flight")
+//                        .withTransition(R.anim.push_right_in,R.anim.push_right_out)
+//                        .navigation()
+//                finish()
             }
 
             override fun onAnimationCancel(p0: Animator?) {
@@ -195,10 +202,10 @@ class WelcomeActivity : BaseActivity() {
                         }
 
                         override fun onComplete() {
-                            ARouter.getInstance().build("/ui/main")
-                                    .withTransition(R.anim.push_right_in, R.anim.push_right_out)
-                                    .navigation()
-                            finish()
+//                            ARouter.getInstance().build("/ui/main")
+//                                    .withTransition(R.anim.push_right_in, R.anim.push_right_out)
+//                                    .navigation()
+//                            finish()
                         }
 
                         override fun onError(e: Throwable) {
