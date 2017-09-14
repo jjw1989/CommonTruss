@@ -6,6 +6,7 @@ import android.view.View
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.powervision.gcs.R
 import com.powervision.gcs.base.BaseActivity
+import com.powervision.gcs.ui.fgt.fly.PVCameraSetingFragment
 import com.powervision.gcs.ui.fgt.main.FlyFragment
 import com.powervision.gcs.ui.fgt.main.MediaFragment
 import com.powervision.gcs.ui.fgt.main.ServiceFragment
@@ -56,7 +57,7 @@ class MainMenuActivity : BaseActivity() {
      */
     private fun initNavigateTabBar(savedInstanceState: Bundle?) {
         navigateTabBar.onRestoreInstanceState(savedInstanceState)
-        navigateTabBar.addTab(FlyFragment::class.java, MainNavigateTabBar.TabParam(R.mipmap.main_menu_fly, R.mipmap.main_menu_fly_selected, R.string.tab_fly))
+        navigateTabBar.addTab(PVCameraSetingFragment::class.java, MainNavigateTabBar.TabParam(R.mipmap.main_menu_fly, R.mipmap.main_menu_fly_selected, R.string.tab_fly))
         navigateTabBar.addTab(MediaFragment::class.java, MainNavigateTabBar.TabParam(R.mipmap.main_menu_album, R.mipmap.main_menu_album_selected,  R.string.tab_media))
         navigateTabBar.addTab(ServiceFragment::class.java, MainNavigateTabBar.TabParam(R.mipmap.main_menu_find, R.mipmap.main_menu_find_selected, R.string.tab_service))
         navigateTabBar.addTab(UserCenterFragment::class.java, MainNavigateTabBar.TabParam(R.mipmap.main_menu_user, R.mipmap.main_menu_user_selected, R.string.tab_usercenter))

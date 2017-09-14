@@ -122,12 +122,12 @@ class WelcomeActivity : BaseActivity() {
                 // ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
                // sendSMS()
                 //    ARouter.getInstance().build("/test/permission").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
-                //  ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
+                  ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
 //                ARouter.getInstance()
 //                        .build("/aty/fly/flight")
 //                        .withTransition(R.anim.push_right_in,R.anim.push_right_out)
 //                        .navigation()
-//                finish()
+                finish()
             }
 
             override fun onAnimationCancel(p0: Animator?) {

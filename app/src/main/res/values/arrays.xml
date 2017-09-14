@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="titles">
+        <item>相机参数</item>
+        <item>相机设置</item>
+        <item>Strip</item>
+    </string-array>
+
+</resources>
