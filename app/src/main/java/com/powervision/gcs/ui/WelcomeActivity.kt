@@ -31,6 +31,7 @@ import io.reactivex.functions.Consumer
 import io.reactivex.functions.Function
 import kotlinx.android.synthetic.main.gcs_welcome_layout.*
 import java.util.concurrent.TimeUnit
+import javax.security.auth.login.LoginException
 
 
 /**
@@ -38,7 +39,7 @@ import java.util.concurrent.TimeUnit
  * Create by Sundy on 2017/8/8
  */
 class WelcomeActivity : BaseActivity() {
-
+    var mPVConnManager:PVConnManager?=null
     /**
      * 接收数据
      */
@@ -67,6 +68,7 @@ class WelcomeActivity : BaseActivity() {
     @RequiresApi(Build.VERSION_CODES.HONEYCOMB)
     override fun doBusiness() {
         setScreenArrts()
+        mPVConnManager= PVConnManager.getInstance()
         initAnim()
         permissionsRequest()
         testRxJava()
@@ -75,9 +77,12 @@ class WelcomeActivity : BaseActivity() {
     }
 
     private fun testRxJava() {
-        var manager: PVConnManager = PVConnManager()
-        var config:PVConnConfig = PVConnConfig.Builder().builder()
-        manager.initSDK(config)
+
+        if (mPVConnManager!!.connFlag==12){
+            Log.i("PVConnManager","11111111111111111111111111")
+        }else{
+            Log.i("PVConnManager","2222222222222222222222222222")
+        }
 //        Observable.interval(0,6000,TimeUnit.MILLISECONDS)
 //                .subscribe{
 //                    aLong->Log.i("test","along="+aLong)
@@ -115,7 +120,7 @@ class WelcomeActivity : BaseActivity() {
 
                 //    ARouter.getInstance().build("/test/permission").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
                 // ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
-                sendSMS()
+               // sendSMS()
                 //    ARouter.getInstance().build("/test/permission").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
                 //  ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
 //                ARouter.getInstance()

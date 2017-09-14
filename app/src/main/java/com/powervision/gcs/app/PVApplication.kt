@@ -2,6 +2,9 @@ package com.powervision.gcs.app
 
 import android.support.multidex.BuildConfig
 import com.alibaba.android.arouter.launcher.ARouter
+import com.powervision.gcs.sdk.PVConnConfig
+import com.powervision.gcs.sdk.PVConnManager
+
 /**
  * 真对当前项目设置的全局属性和方法
  * Created by Sundy on 2017/8/2.
@@ -11,6 +14,16 @@ class PVApplication: BaseApplication() {
     override fun onCreate() {
         super.onCreate()
         initARouter()
+        initSDK()
+    }
+
+    /**
+     * 初始化sdk
+     */
+    private fun initSDK() {
+        var manager: PVConnManager = PVConnManager.getInstance()
+        var config: PVConnConfig = PVConnConfig.Builder().builder()
+        manager.initSDK(config)
     }
 
     /**
