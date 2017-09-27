@@ -124,13 +124,13 @@ class WelcomeActivity : BaseActivity() {
                // sendSMS()
                 //    ARouter.getInstance().build("/test/permission").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
                 //  ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
-//                ARouter.getInstance()
-//                        .build("/aty/fly/flight")
-//                        .withTransition(R.anim.push_right_in,R.anim.push_right_out)
-//                        .navigation()
-               // finish()
-                var manager:SelfCheckManager= SelfCheckManager(mActivity)
-                manager.showView()
+                ARouter.getInstance()
+                        .build("/aty/fly/flight")
+                        .withTransition(R.anim.push_right_in,R.anim.push_right_out)
+                        .navigation()
+                finish()
+//                var manager:SelfCheckManager= SelfCheckManager(mActivity)
+//                manager.showView()
             }
 
             override fun onAnimationCancel(p0: Animator?) {
