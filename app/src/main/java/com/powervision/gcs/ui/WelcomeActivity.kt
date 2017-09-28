@@ -18,6 +18,7 @@ import com.powervision.gcs.config.PVFileDir
 import com.powervision.gcs.sdk.PVConnConfig
 import com.powervision.gcs.sdk.PVConnManager
 import com.powervision.gcs.utils.TFileUtil
+import com.powervision.gcs.view.SelfCheckManager
 import com.yanzhenjie.permission.AndPermission
 import com.yanzhenjie.permission.Permission
 import com.yanzhenjie.permission.PermissionNo
@@ -122,12 +123,14 @@ class WelcomeActivity : BaseActivity() {
                 // ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
                // sendSMS()
                 //    ARouter.getInstance().build("/test/permission").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
-                  ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
-//                ARouter.getInstance()
-//                        .build("/aty/fly/flight")
-//                        .withTransition(R.anim.push_right_in,R.anim.push_right_out)
-//                        .navigation()
+                //  ARouter.getInstance().build("/ui/main").withTransition(R.anim.push_right_in,R.anim.push_right_out).navigation()
+                ARouter.getInstance()
+                        .build("/aty/fly/flight")
+                        .withTransition(R.anim.push_right_in,R.anim.push_right_out)
+                        .navigation()
                 finish()
+//                var manager:SelfCheckManager= SelfCheckManager(mActivity)
+//                manager.showView()
             }
 
             override fun onAnimationCancel(p0: Animator?) {

@@ -10,8 +10,13 @@ import com.powervision.gcs.R
  * 相机菜单
  * Created by Sundy on 2017/8/31.
  */
-class PVCameraMenuView(context: Context?, attrs: AttributeSet?) : LinearLayout(context, attrs) {
+class PVCameraMenuView(context: Context?) : LinearLayout(context) {
     init {
         View.inflate(context, R.layout.pv_camera_menu_layout,this)
     }
+
+    constructor(context: Context,attrs: AttributeSet): this(context) {
+
+    }
+
 }

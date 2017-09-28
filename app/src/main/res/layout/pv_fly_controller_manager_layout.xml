@@ -7,10 +7,11 @@
     android:visibility="visible"
     tools:context="com.powervision.gcs.ui.aty.fly.PVFlightControllerActivity">
 
-    <!--<com.powervision.gcs.view.PVTopMenuView-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="wrap_content"-->
-    <!--android:layout_alignParentTop="true" />-->
+    <com.powervision.gcs.view.PVTopMenuView
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_alignParentTop="true"
+        android:id="@+id/PVTopMenuView" />
     <!-- <com.powervision.gcs.view.TestView
         android:layout_width="match_parent"
         android:layout_height="60dp" /> -->
@@ -49,6 +50,12 @@
            android:layout_alignParentStart="true" />
    </com.powervision.gcs.view.SlidingRelativeLayout>
 
+    <com.powervision.gcs.view.PVCameraMenuView
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+         />
 
 
     <!--<TextView-->
